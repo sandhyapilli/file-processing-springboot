@@ -30,17 +30,6 @@ package com.example.fileProcessor;
 	            throw new IllegalArgumentException("Only CSV or Excel files are supported.");
 	        }
 	    }
-
-	  
-	    public String convertXmlToJson(MultipartFile file) throws IOException {
-	        XmlMapper xmlMapper = new XmlMapper();
-	        ObjectMapper jsonMapper = new ObjectMapper();
-
-	      
-	        JsonNode jsonNode = xmlMapper.readTree(file.getInputStream());
-	        return jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
-	    }
-
 	  
 	    private List<String> processExcelFile(MultipartFile file, int startRow) throws IOException {
 	        List<String> output = new ArrayList<>();
@@ -78,6 +67,15 @@ package com.example.fileProcessor;
 	        }
 	        return output;
 	    }
+		 public String convertXmlToJson(MultipartFile file) throws IOException {
+	        XmlMapper xmlMapper = new XmlMapper();
+	        ObjectMapper jsonMapper = new ObjectMapper();
+
+	      
+	        JsonNode jsonNode = xmlMapper.readTree(file.getInputStream());
+	        return jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
+	    }
+
 	}
 
 
